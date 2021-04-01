@@ -6,21 +6,31 @@ function WeatherApp() {
         <>
             <header>Weather App</header>
             <div className="container">
-
                 <div className="inputField">
-                    <input type="text" placeholder="find a city"/>
-                    <button><i className="fas fa-plus">+</i></button>
+                    <input type="text" placeholder="Enter city"/>
+                </div>
+                <div className="city__and__date">
+                    <div className="city-name">St-Petersburg, RU</div>
+                    <div className="date">Thursday 1 April</div>
                 </div>
 
             <div className="weather__content">
-            <div className="weather-sun">
-                <div className="sun">
-                    <div className="rays"></div>
-                    <div className="rays"></div>
-                    <div className="rays"></div>
-                    <div className="rays"></div>
+                <div className="weather__image">
+                    <div className="weather-sun">
+                        <div className="sun">
+                            <div className="rays"></div>
+                            <div className="rays"></div>
+                            <div className="rays"></div>
+                            <div className="rays"></div>
+                        </div>
+                    </div>
+                    <div className="weather__image-info">
+                        <div className="weather__temp">5°</div>
+                        <div className="weather__sky">sunny</div>
+                    </div>
+
                 </div>
-            </div>
+
                 {/*<div className="weather-cloud">*/}
                 {/*    <div className="cloud"></div>*/}
                 {/*    <div className="cloud"></div>*/}
@@ -50,13 +60,61 @@ function WeatherApp() {
             <div className="weather__info">
 
                 <ul className="todoList">
-
+                    <li>High:</li>
+                    <li>Low:</li>
+                    <li>Wind:</li>
+                    <li>Sunset:</li>
+                    <li>Sunrise:</li>
                 </ul>
-                <div className="footer">
-
+            </div>
+            </div>
+                <div className="weather___for-five-days">
+                    <div className="weather__day">
+                        <div className="weatherIcon">
+                            <div className="sunny">
+                                <div className="inner"></div>
+                            </div>
+                        </div>
+                        <div className="day-temp">5°</div>
+                        <div className="day-sky">sunny</div>
+                    </div>
+                    <div className="weather__day">
+                        <div className="weatherIcon">
+                            <div className="sunny">
+                                <div className="inner"></div>
+                            </div>
+                        </div>
+                        <div className="day-temp">5°</div>
+                        <div className="day-sky">sunny</div>
+                    </div>
+                    <div className="weather__day">
+                        <div className="weatherIcon">
+                            <div className="sunny">
+                                <div className="inner"></div>
+                            </div>
+                        </div>
+                        <div className="day-temp">5°</div>
+                        <div className="day-sky">sunny</div>
+                    </div>
+                    <div className="weather__day">
+                        <div className="weatherIcon">
+                            <div className="sunny">
+                                <div className="inner"></div>
+                            </div>
+                        </div>
+                        <div className="day-temp">5°</div>
+                        <div className="day-sky">sunny</div>
+                    </div>
+                    <div className="weather__day">
+                        <div className="weatherIcon">
+                            <div className="sunny">
+                                <div className="inner"></div>
+                            </div>
+                        </div>
+                        <div className="day-temp">5°</div>
+                        <div className="day-sky">sunny</div>
+                    </div>
                 </div>
-            </div>
-            </div>
             </div>
         </>
     );
