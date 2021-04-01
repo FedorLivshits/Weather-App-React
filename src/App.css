@@ -14,9 +14,24 @@ body{
     height: 100vh;
     /* overflow: hidden; */
     padding: 10px;
-    background: linear-gradient(to bottom, #68EACC 0%, #497BE8 100%);
+    background: linear-gradient(to bottom, #68dbea 0%, #497BE8 100%);
 }
-.wrapper{
+header{
+    font-size: 30px;
+    font-weight: 600;
+    color: white;
+}
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+.weather__content{
+    display: flex;
+    justify-content: space-around;
+}
+
+.weather__info{
     background: #fff;
     max-width: 400px;
     width: 100%;
@@ -25,28 +40,28 @@ body{
     border-radius: 5px;
     box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
 }
-.wrapper header{
-    font-size: 30px;
-    font-weight: 600;
-}
-.wrapper .inputField{
-    margin: 20px 0;
-    width: 100%;
+
+.inputField{
+    margin: 0 auto;
+    width: 500px;
     display: flex;
     height: 45px;
 }
+
 .inputField input{
     width: 85%;
     height: 100%;
     outline: none;
-    border-radius: 3px;
-    border: 1px solid #ccc;
+    border-radius: 30px;
+    border: none;
     font-size: 17px;
     padding-left: 15px;
     transition: all 0.3s ease;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
 }
+
 .inputField input:focus{
-    border-color: #8E49E8;
+    box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
 }
 .inputField button{
     width: 50px;
@@ -59,72 +74,312 @@ body{
     background: #8E49E8;
     cursor: pointer;
     border-radius: 3px;
-    opacity: 0.6;
+
     pointer-events: none;
     transition: all 0.3s ease;
 }
-.inputField button:hover,
-.footer button:hover{
-    background: #721ce3;
-}
-.inputField button.active{
-    opacity: 1;
-    pointer-events: auto;
-}
-.wrapper .todoList{
-    max-height: 250px;
-    overflow-y: auto;
-}
-.todoList li{
+/*.inputField button:hover,*/
+/*.footer button:hover{*/
+/*    background: #721ce3;*/
+/*}*/
+/*.inputField button.active{*/
+/*    opacity: 1;*/
+/*    pointer-events: auto;*/
+/*}*/
+/*.weather__info .todoList{*/
+/*    max-height: 250px;*/
+/*    overflow-y: auto;*/
+/*}*/
+/*.todoList li{*/
+/*    position: relative;*/
+/*    list-style: none;*/
+/*    height: 45px;*/
+/*    line-height: 45px;*/
+/*    margin-bottom: 8px;*/
+/*    background: #f2f2f2;*/
+/*    border-radius: 3px;*/
+/*    padding: 0 15px;*/
+/*    cursor: default;*/
+/*    overflow: hidden;*/
+/*}*/
+/*.todoList li .icon{*/
+/*    position: absolute;*/
+/*    right: -45px;*/
+/*    background: #e74c3c;*/
+/*    width: 45px;*/
+/*    text-align: center;*/
+/*    color: #fff;*/
+/*    border-radius: 0 3px 3px 0;*/
+/*    cursor: pointer;*/
+/*    transition: all 0.2s ease;*/
+/*}*/
+/*.todoList li:hover .icon{*/
+/*    right: 0px;*/
+/*}*/
+/*.weather__info .footer{*/
+/*    display: flex;*/
+/*    width: 100%;*/
+/*    margin-top: 20px;*/
+/*    align-items: center;*/
+/*    justify-content: space-between;*/
+/*}*/
+/*.footer button{*/
+/*    padding: 6px 10px;*/
+/*    border-radius: 3px;*/
+/*    border: none;*/
+/*    outline: none;*/
+/*    color: #fff;*/
+/*    font-weight: 400;*/
+/*    font-size: 16px;*/
+/*    margin-left: 5px;*/
+/*    background: #8E49E8;*/
+/*    cursor: pointer;*/
+/*    user-select: none;*/
+/*    opacity: 0.6;*/
+/*    pointer-events: none;*/
+/*    transition: all 0.3s ease;*/
+/*}*/
+/*.footer button.active{*/
+/*    opacity: 1;*/
+/*    pointer-events: auto;*/
+/*}*/
+
+
+/*____________________________________________________________________________________________*/
+.weather-sun,.weather-cloud,.weather-snow,.weather-cloudAndSun,.weather-rain{
+    width: 200px;
+    height: 200px;
+    display: inline-block;
     position: relative;
-    list-style: none;
-    height: 45px;
-    line-height: 45px;
-    margin-bottom: 8px;
-    background: #f2f2f2;
-    border-radius: 3px;
-    padding: 0 15px;
-    cursor: default;
-    overflow: hidden;
 }
-.todoList li .icon{
+
+.weather-cloudAndSun,.weather-rain{
+    margin-left: 60px;
+}
+
+.sun{
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(45deg,#F3A966,yellow);
+    border-radius: 100%;
+    transform: rotate(0deg);
+    animation: xuanzhuang 12s infinite linear;
     position: absolute;
-    right: -45px;
-    background: #e74c3c;
-    width: 45px;
-    text-align: center;
-    color: #fff;
-    border-radius: 0 3px 3px 0;
-    cursor: pointer;
-    transition: all 0.2s ease;
+    left: 50%;
+    top: 50%;
 }
-.todoList li:hover .icon{
-    right: 0px;
+
+.rays{
+    width: 8px;
+    height: 15px;
+    background: yellow;
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+    top: -25px;
+    box-shadow: 0 135px yellow;
+    border-radius: 4px;
+    transform-origin: 0px 75px;
 }
-.wrapper .footer{
-    display: flex;
-    width: 100%;
-    margin-top: 20px;
-    align-items: center;
-    justify-content: space-between;
+
+.rays:nth-child(2){
+    transform: rotate(45deg);
 }
-.footer button{
-    padding: 6px 10px;
-    border-radius: 3px;
-    border: none;
-    outline: none;
-    color: #fff;
-    font-weight: 400;
-    font-size: 16px;
-    margin-left: 5px;
-    background: #8E49E8;
-    cursor: pointer;
-    user-select: none;
-    opacity: 0.6;
-    pointer-events: none;
-    transition: all 0.3s ease;
+
+.rays:nth-child(3){
+    transform: rotate(90deg);
 }
-.footer button.active{
+
+.rays:nth-child(4){
+    transform: rotate(135deg);
+}
+
+@keyframes xuanzhuang {
+    100% { transform: rotate(360deg); }
+}
+
+
+.cloud{
+    border-radius: 25px;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    width: 150px;
+    height: 50px;
+    background: #cdedf8;
+}
+
+.cloud:nth-child(2){
+    left: 200px;
+    width: 100px;
+    height: 30px;
+    background: #cdedf8;
     opacity: 1;
-    pointer-events: auto;
+    animation: cloud 8s linear infinite;
+}
+
+.cloud::after,.cloud::before{
+    content: '';
+    display: block;
+    background: #cdedf8;
+    border-radius: 50%;
+    position: absolute;
+
+}
+
+.cloud:nth-child(2)::after,.cloud:nth-child(2)::before{
+    content: '';
+    display: block;
+    background: #cdedf8;
+    border-radius: 50%;
+    position: absolute;
+
+}
+
+.cloud::after{
+    width: 80px;
+    height: 80px;
+    left: 45px;
+    top: -45px;
+}
+
+.cloud::before{
+    width: 60px;
+    height: 60px;
+    top: -10px;
+    left: 0;
+}
+
+.cloud:nth-child(2)::after{
+    width: 50px;
+    height: 50px;
+    left: 35px;
+    top: -30px;
+}
+
+.cloud:nth-child(2)::before{
+    width: 40px;
+    height: 40px;
+    top: -10px;
+    left: 0px;
+}
+
+@keyframes cloud {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% {
+        opacity: 0;
+        transform: scale(0.8) translateX(-200%);
+    }
+}
+
+.snow{
+    width: 150px;
+    height: 10px;
+    border-radius: 5px;
+    background: #CDEDF8;
+    transform: rotate(0deg);
+    position: absolute;
+    top: 70%;
+    left: 60%;
+    animation: Rotate 12s infinite linear;
+    position: relative;
+}
+
+.snow::after,.snow::before{
+    content: '';
+    width: 150px;
+    height: 10px;
+    border-radius: 5px;
+    background: #CDEDF8;
+    position: absolute;
+}
+
+.snow::after{
+    transform: rotate(60deg);
+}
+
+.snow::before{
+    transform: rotate(120deg);
+}
+
+.f{
+    width: 28px;
+    height: 10px;
+    border-radius: 5px;
+    position: absolute;
+    background: #CDEDF8;
+    top: -45px;
+    left: 25px;
+    box-shadow: 0px 90px #CDEDF8,72px 90px #CDEDF8,72px 0px #CDEDF8;
+}
+
+.f::after,.f::before{
+    content: '';
+    width: 28px;
+    height: 10px;
+    transform: rotate(60deg);
+    border-radius: 5px;
+    position: absolute;
+    background: #CDEDF8;
+    top: -10px;
+    left: 55px;
+    box-shadow: 0px 90px #CDEDF8,72px 90px #CDEDF8,72px 0px #CDEDF8;
+}
+
+.f::before{
+    transform: rotate(120deg);
+    left: 15px;
+    box-shadow: 72px 0px #CDEDF8,72px -90px #CDEDF8,0px -90px #CDEDF8;
+}
+
+@keyframes Rotate {
+    100% { transform: rotate(360deg); }
+}
+
+.weather-cloudAndSun .cloud{
+    z-index: 1;
+    opacity: 0.95;
+}
+
+.weather-cloudAndSun .sun{
+    position: absolute;
+    left: 180px;
+    top: 60px;
+    z-index: 0;
+}
+
+.rain{
+    width: 4px;
+    height: 40px;
+    background:linear-gradient(transparent,lightblue);
+    position: absolute;
+    left: 210px;
+    top: 170px;
+    border-radius: 2px;
+    animation: rainning 2s infinite;
+}
+
+.rain:nth-child(2){
+    height: 20px;
+    left: 190px;
+    top: 190px;
+}
+
+.rain:nth-child(3){
+    height: 50px;
+    left: 170px;
+    top: 180px;
+}
+
+.rain:nth-child(4){
+    height: 25px;
+    left: 150px;
+    top: 185px;
+}
+
+@keyframes rainning{
+    100%{
+        top: 200px;
+    }
 }
