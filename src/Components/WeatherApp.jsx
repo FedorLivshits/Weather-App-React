@@ -1,62 +1,70 @@
 import React from "react";
 import * as axios from 'axios'
 
-function WeatherApp() {
-    axios.get("http://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&appid=9e66b26ecdfc14c9acc56a4db3a671f2")
-        .then(response => { debugger
-            console.log(response.data)})
+class WeatherApp extends React.Component {
+    componentDidMount() {
+        axios.get("http://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&appid=9e66b26ecdfc14c9acc56a4db3a671f2")
+            .then(response => {
+                debugger
+                console.log(response.data)
+            })
+    }
 
-    return (
-        <>
-            <header>Weather App</header>
-            <div className="container">
-                <div className="inputField">
-                    <input type="text" placeholder="Enter city"/>
-                </div>
-                <div className="city__and__date">
-                    <div className="city-name">St-Petersburg, RU</div>
-                    <div className="date">
-                        {new Date().toLocaleString('en', {weekday: 'long'})} {new Date().getDay()} April
+    render() {
+        return (
+            <>
+                <header>Weather App</header>
+                <div className="container">
+                    <div className="inputField">
+                        <input type="text" placeholder="Enter city"/>
                     </div>
-                </div>
-
-                <div className="weather__content">
-                    <div className="weather__image">
-                        <WeatherImage/>
-                        <div className="weather__image-info">
-                            <div className="weather__temp">5°</div>
-                            <div className="weather__sky">sunny</div>
-                        </div>
-
-                    </div>
-                    <div className="weather__info">
-
-                        <div className="column-1">
-                            <ul className="todoList">
-                                <li>Max-temp:</li>
-                                <li>Min-temp:</li>
-                                <li>Feels like:</li>
-                            </ul>
-                        </div>
-                        <div className="column-2">
-                            <ul className="todoList">
-                                <li>Wind:</li>
-                                <li>Sunset:</li>
-                                <li>Sunrise:</li>
-                            </ul>
+                    <div className="city__and__date">
+                        <div className="city-name">St-Petersburg, RU</div>
+                        <div className="date">
+                            {new Date().toLocaleString('en', {weekday: 'long'})} {new Date().getDay()} April
                         </div>
                     </div>
+
+                    <div className="weather__content">
+                        <div className="weather__image">
+                            <WeatherImage/>
+                            <div className="weather__image-info">
+                                <div className="weather__temp">5°</div>
+                                <div className="weather__sky">sunny</div>
+                            </div>
+
+                        </div>
+                        <div className="weather__info">
+
+                            <div className="column-1">
+                                <ul className="todoList">
+                                    <li>Max-temp:</li>
+                                    <li>Min-temp:</li>
+                                    <li>Feels like:</li>
+                                </ul>
+                            </div>
+                            <div className="column-2">
+                                <ul className="todoList">
+                                    <li>Wind:</li>
+                                    <li>Sunset:</li>
+                                    <li>Sunrise:</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="weather___for-five-days">
+                        <MiniWeatherDay/>
+                        <MiniWeatherDay/>
+                        <MiniWeatherDay/>
+                        <MiniWeatherDay/>
+                        <MiniWeatherDay/>
+                    </div>
                 </div>
-                <div className="weather___for-five-days">
-                    <MiniWeatherDay/>
-                    <MiniWeatherDay/>
-                    <MiniWeatherDay/>
-                    <MiniWeatherDay/>
-                    <MiniWeatherDay/>
-                </div>
-            </div>
-        </>
-    );
+            </>
+        );
+    }
+
+
 }
 
 function MiniWeatherDay() {
