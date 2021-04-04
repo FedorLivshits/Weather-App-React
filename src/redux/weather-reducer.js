@@ -9,6 +9,7 @@ let initialState = {
     temp: undefined,
     temp_max: null,
     temp_min: null,
+    feels_like: null,
     description: ""
 }
 

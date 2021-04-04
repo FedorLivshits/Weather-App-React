@@ -1,7 +1,11 @@
 import React from "react";
-
+import * as axios from 'axios'
 
 function WeatherApp() {
+    axios.get("http://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&appid=9e66b26ecdfc14c9acc56a4db3a671f2")
+        .then(response => { debugger
+            console.log(response.data)})
+
     return (
         <>
             <header>Weather App</header>
@@ -27,13 +31,20 @@ function WeatherApp() {
                     </div>
                     <div className="weather__info">
 
-                        <ul className="todoList">
-                            <li>High:</li>
-                            <li>Low:</li>
-                            <li>Wind:</li>
-                            <li>Sunset:</li>
-                            <li>Sunrise:</li>
-                        </ul>
+                        <div className="column-1">
+                            <ul className="todoList">
+                                <li>Max-temp:</li>
+                                <li>Min-temp:</li>
+                                <li>Feels like:</li>
+                            </ul>
+                        </div>
+                        <div className="column-2">
+                            <ul className="todoList">
+                                <li>Wind:</li>
+                                <li>Sunset:</li>
+                                <li>Sunrise:</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
                 <div className="weather___for-five-days">
