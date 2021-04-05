@@ -16,20 +16,20 @@ function WeatherInfo({temp_max, temp_min, feels_like, wind, sunset, sunrise}) {
     return (
     <div className="weather__info">
         <div className="column-1">
-            <ul className="todoList">
+            <ul className="column">
                 <li>
                     <span> Max-temp: </span>
-                    {temp_max}°
+                   {temp_max}°
                 </li>
-                <li><span> Min-temp: </span>{temp_min}°</li>
-                <li><span> Feels like: </span>{feels_like}°</li>
+                <li><span> Min-temp: </span>{temp_min}° </li>
+                <li><span> Feels like: </span>{feels_like}° </li>
             </ul>
         </div>
         <div className="column-2">
-            <ul className="todoList">
-                <li><span> Wind: </span> {wind}m/s</li>
+            <ul className="column">
+                <li><span> Wind: </span> {wind}m/s </li>
                 <li><span> Sunset: </span> {getSunsetTime()} </li>
-                <li><span> Sunrise: </span> {getSunriseTime()}</li>
+                <li><span> Sunrise: </span> {getSunriseTime()} </li>
             </ul>
         </div>
     </div>

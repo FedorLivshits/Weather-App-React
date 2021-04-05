@@ -12,7 +12,6 @@
 body{
     width: 100%;
     height: 100vh;
-    /* overflow: hidden; */
     padding: 10px;
     background: rgb(134,185,224);
     background: linear-gradient(to bottom, #21a1ba 0%, #4d2cc4 100%);
@@ -27,39 +26,12 @@ header{
     margin: 0 auto;
     padding: 0 15px;
 }
-.weather__content{
-    display: flex;
-    justify-content: space-around;
-}
-.weather__image{
-    display: flex;
-    justify-content: center;
-    color: white;
-    font-size: 30px;
-   width: 50%;
-
-}
-.weather__image-info{
-    margin-left: 40px;
-}
-.weather__temp{
-    font-size: 50px;
-}
-.weather__info{
-    background: #ffffff;
-    width: 50%;
-    padding: 25px;
-    border-radius: 5px;
-    box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
-    display: flex;
-    justify-content: space-between;
-}
-
 .inputField{
     margin: 0 auto;
     width: 500px;
     display: flex;
     height: 45px;
+    position: relative;
 }
 
 .inputField input{
@@ -77,6 +49,14 @@ header{
 .inputField input:focus{
     box-shadow: 0px 15px 15px rgba(0,0,0,0.1);
 }
+.inputField img{
+    position: absolute;
+    right: 17px;
+    top: 12px;
+    height: 20px;
+    opacity: 0.5;
+    cursor: pointer;
+}
 .city__and__date{
     margin-top: 30px;
     margin-bottom: 30px;
@@ -87,32 +67,49 @@ header{
 .date{
     font-size: 17px;
 }
-.inputField button{
-    width: 50px;
-    height: 100%;
-    border: none;
-    color: #fff;
-    margin-left: 5px;
-    font-size: 17px;
-    outline: none;
-    background: #8E49E8;
-    cursor: pointer;
-    border-radius: 3px;
-    box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
+
+.weather__content{
+    display: flex;
+    justify-content: space-around;
 }
-.inputField button:hover,
-.footer button:hover{
-    background: #721ce3;
+
+.weather__image{
+    display: flex;
+    justify-content: center;
+    color: white;
+    font-size: 30px;
+   width: 50%;
+
 }
-.inputField button.active{
-    opacity: 1;
-    pointer-events: auto;
+.weather__image-info{
+    margin-left: 40px;
 }
-.weather__info .todoList{
+.weather__temp{
+    font-size: 50px;
+}
+.weather__description{
+    font-size: 25px;
+}
+.weather__info{
+    background: #ffffff;
+    width: 50%;
+    padding: 25px;
+    border-radius: 5px;
+    box-shadow: 0px 10px 15px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+}
+
+.weather__info .column{
     max-height: 250px;
 }
-.todoList li{
+.column-1{
+    width: 48%;
+}
+.column-2{
+    width: 48%;
+}
+.column li{
     list-style: none;
     height: 45px;
     line-height: 45px;
@@ -122,16 +119,18 @@ header{
     padding: 0 15px;
     cursor: default;
     overflow: hidden;
+    display: flex;
+    justify-content: space-between;
 }
-.todoList li span{
+.column li span{
    color: #4d2cc4;
 }
-.column-1{
-    width: 50%;
-}
-.column-2{
-    width: 50%;
-}
+
+
+
+
+
+/*________________________________________________________________________________________*/
 .weather___for-five-days{
     display: flex;
     justify-content: space-around;

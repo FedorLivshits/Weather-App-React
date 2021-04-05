@@ -39,7 +39,7 @@ function WeatherImageInfo({temp, description}) {
     return(
         <div className="weather__image-info">
             <div className="weather__temp">{Math.round(temp)}°</div>
-            <div className="weather__sky">{description}</div>
+            <div className="weather__description">{description}</div>
         </div>
     )
 }
