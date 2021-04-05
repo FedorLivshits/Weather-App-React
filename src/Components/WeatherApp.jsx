@@ -1,22 +1,14 @@
 import React from "react";
-import * as axios from 'axios'
 
-class WeatherApp extends React.Component {
-    componentDidMount() {
-        axios.get("http://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&appid=9e66b26ecdfc14c9acc56a4db3a671f2")
-            .then(response => {
-                debugger
-                console.log(response.data)
-            })
-    }
 
-    render() {
+function WeatherApp() {
         return (
             <>
                 <header>Weather App</header>
                 <div className="container">
                     <div className="inputField">
                         <input type="text" placeholder="Enter city"/>
+                        <button>Find</button>
                     </div>
                     <div className="city__and__date">
                         <div className="city-name">St-Petersburg, RU</div>
@@ -62,9 +54,6 @@ class WeatherApp extends React.Component {
                 </div>
             </>
         );
-    }
-
-
 }
 
 function MiniWeatherDay() {

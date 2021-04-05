@@ -1,10 +1,11 @@
-const CHANGE_FILTER = 'my-app/ToDo-reducer/CHANGE_FILTER';
+const SET_WEATHER = 'SET_WEATHER';
 
 let initialState = {
+    weather: {},
     city: undefined,
     country: undefined,
-    sunrise: 1617418501,
-    sunset: 1617466215,
+    sunrise: undefined,
+    sunset: undefined,
     main: undefined,
     temp: undefined,
     temp_max: null,
@@ -15,13 +16,15 @@ let initialState = {
 
 const weatherReducer = (state = initialState, action) => {
     switch (action.type) {
-
+        case SET_WEATHER: {
+            return {...state, weather: action.weather}
+        }
         default:
             return state;
     }
 }
 
-export const changeFilterAC = (activeFilter) => ({type: CHANGE_FILTER, activeFilter});
+export const setWeather = (weather) => ({type: SET_WEATHER, weather});
 
 export default weatherReducer;
 
