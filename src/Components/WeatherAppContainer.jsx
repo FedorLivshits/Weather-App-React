@@ -5,7 +5,7 @@ import WeatherApp from "./WeatherApp";
 import * as axios from "axios";
 
  class WeatherAppContainer extends React.Component {
-    componentDidMount() {
+     componentDidMount() {
         axios.get("http://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&appid=9e66b26ecdfc14c9acc56a4db3a671f2")
             .then(response => {
                 this.props.setWeather(response.data)

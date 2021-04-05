@@ -123,6 +123,9 @@ header{
     cursor: default;
     overflow: hidden;
 }
+.todoList li span{
+   color: #4d2cc4;
+}
 .column-1{
     width: 50%;
 }

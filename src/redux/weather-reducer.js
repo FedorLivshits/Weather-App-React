@@ -1,17 +1,24 @@
 const SET_WEATHER = 'SET_WEATHER';
 
 let initialState = {
-    weather: {},
-    city: undefined,
-    country: undefined,
-    sunrise: undefined,
-    sunset: undefined,
-    main: undefined,
-    temp: undefined,
-    temp_max: null,
-    temp_min: null,
-    feels_like: null,
-    description: ""
+    weather: {
+        name: undefined,
+        sys: {
+            country: undefined,
+            sunrise: undefined,
+            sunset: undefined,
+        },
+        main:{
+            temp: undefined,
+            temp_max: null,
+            temp_min: null,
+            feels_like: null,
+        },
+        wind: {
+            speed: 5,
+        },
+        weather: [{ description: ""}]
+        },
 }
 
 const weatherReducer = (state = initialState, action) => {

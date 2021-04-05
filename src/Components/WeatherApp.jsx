@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function WeatherApp() {
+function WeatherApp({weather}) {
         return (
             <>
                 <header>Weather App</header>
@@ -11,7 +11,7 @@ function WeatherApp() {
                         <button>Find</button>
                     </div>
                     <div className="city__and__date">
-                        <div className="city-name">St-Petersburg, RU</div>
+                        <div className="city-name">{weather.name}, {weather.sys.country}</div>
                         <div className="date">
                             {new Date().toLocaleString('en', {weekday: 'long'})} {new Date().getDay()} April
                         </div>
@@ -21,8 +21,8 @@ function WeatherApp() {
                         <div className="weather__image">
                             <WeatherImage/>
                             <div className="weather__image-info">
-                                <div className="weather__temp">5°</div>
-                                <div className="weather__sky">sunny</div>
+                                <div className="weather__temp">{Math.round(weather.main.temp)}°</div>
+                                <div className="weather__sky">{weather.weather[0].description}</div>
                             </div>
 
                         </div>
@@ -30,16 +30,19 @@ function WeatherApp() {
 
                             <div className="column-1">
                                 <ul className="todoList">
-                                    <li>Max-temp:</li>
-                                    <li>Min-temp:</li>
-                                    <li>Feels like:</li>
+                                    <li>
+                                        <span> Max-temp: </span>
+                                        {weather.main.temp_max}°
+                                    </li>
+                                    <li> <span> Min-temp: </span>{weather.main.temp_min}°</li>
+                                    <li> <span> Feels like: </span>{weather.main.feels_like}°</li>
                                 </ul>
                             </div>
                             <div className="column-2">
                                 <ul className="todoList">
-                                    <li>Wind:</li>
-                                    <li>Sunset:</li>
-                                    <li>Sunrise:</li>
+                                    <li><span> Wind: </span> {weather.wind.speed}m/s</li>
+                                    <li><span> Sunset: </span> {weather.sys.sunset} </li>
+                                    <li><span> Sunrise: </span> {weather.sys.sunrise}</li>
                                 </ul>
                             </div>
                         </div>
@@ -72,6 +75,7 @@ function MiniWeatherDay() {
 
 function WeatherImage() {
     return (
+
         <div className="weather-sun">
             <div className="sun">
                 <div className="rays"></div>
