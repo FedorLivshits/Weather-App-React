@@ -2,14 +2,27 @@ import React from "react";
 
 
 function WeatherApp({weather}) {
+    const getSunsetTime = () =>{
+        let sunset = weather.sys.sunset
+        let date = new Date()
+        date.setTime(sunset)
+        return  date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
+    }
+    const getSunriseTime = () =>{
+        let sunrise = weather.sys.sunrise
+        let date = new Date()
+        date.setTime(sunrise)
+        return  date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
+    }
+
         return (
             <>
                 <header>Weather App</header>
                 <div className="container">
-                    <div className="inputField">
+                    <form className="inputField">
                         <input type="text" placeholder="Enter city"/>
                         <button>Find</button>
-                    </div>
+                    </form>
                     <div className="city__and__date">
                         <div className="city-name">{weather.name}, {weather.sys.country}</div>
                         <div className="date">
@@ -41,8 +54,8 @@ function WeatherApp({weather}) {
                             <div className="column-2">
                                 <ul className="todoList">
                                     <li><span> Wind: </span> {weather.wind.speed}m/s</li>
-                                    <li><span> Sunset: </span> {weather.sys.sunset} </li>
-                                    <li><span> Sunrise: </span> {weather.sys.sunrise}</li>
+                                    <li><span> Sunset: </span> {getSunsetTime()} </li>
+                                    <li><span> Sunrise: </span> {getSunriseTime()}</li>
                                 </ul>
                             </div>
                         </div>

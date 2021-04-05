@@ -15,7 +15,7 @@ let initialState = {
             feels_like: null,
         },
         wind: {
-            speed: 5,
+            speed: null,
         },
         weather: [{ description: ""}]
         },
