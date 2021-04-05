@@ -1,78 +1,51 @@
 import React from "react";
+import WeatherImage from "./WeatherImage/WeatherImage";
+import WeatherForm from "./WeatherForm/WeatherForm";
+import WeatherCityAndDate from "./WeatherCityAndDate/WeatherCityAndDate";
+import WeatherInfo from "./WeatherInfo/WeatherInfo";
 
 
 function WeatherApp({weather}) {
-    const getSunsetTime = () =>{
-        let sunset = weather.sys.sunset
-        let date = new Date()
-        date.setTime(sunset)
-        return  date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
-    }
-    const getSunriseTime = () =>{
-        let sunrise = weather.sys.sunrise
-        let date = new Date()
-        date.setTime(sunrise)
-        return  date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
-    }
 
-        return (
-            <>
-                <header>Weather App</header>
-                <div className="container">
-                    <form className="inputField">
-                        <input type="text" placeholder="Enter city"/>
-                        <button>Find</button>
-                    </form>
-                    <div className="city__and__date">
-                        <div className="city-name">{weather.name}, {weather.sys.country}</div>
-                        <div className="date">
-                            {new Date().toLocaleString('en', {weekday: 'long'})} {new Date().getDay()} April
-                        </div>
+    return (
+        <>
+            <header>Weather App</header>
+            <div className="container">
+                <WeatherForm/>
+                <WeatherCityAndDate city={weather.name} country={weather.sys.country}/>
+
+                <div className="weather__content">
+                    <div className="weather__image">
+                        <WeatherImage weatherDescription={weather.weather[0].main}/>
+                       <WeatherImageInfo temp={weather.main.temp} description={weather.weather[0].description}/>
+
                     </div>
-
-                    <div className="weather__content">
-                        <div className="weather__image">
-                            <WeatherImage/>
-                            <div className="weather__image-info">
-                                <div className="weather__temp">{Math.round(weather.main.temp)}°</div>
-                                <div className="weather__sky">{weather.weather[0].description}</div>
-                            </div>
-
-                        </div>
-                        <div className="weather__info">
-
-                            <div className="column-1">
-                                <ul className="todoList">
-                                    <li>
-                                        <span> Max-temp: </span>
-                                        {weather.main.temp_max}°
-                                    </li>
-                                    <li> <span> Min-temp: </span>{weather.main.temp_min}°</li>
-                                    <li> <span> Feels like: </span>{weather.main.feels_like}°</li>
-                                </ul>
-                            </div>
-                            <div className="column-2">
-                                <ul className="todoList">
-                                    <li><span> Wind: </span> {weather.wind.speed}m/s</li>
-                                    <li><span> Sunset: </span> {getSunsetTime()} </li>
-                                    <li><span> Sunrise: </span> {getSunriseTime()}</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="weather___for-five-days">
-                        <MiniWeatherDay/>
-                        <MiniWeatherDay/>
-                        <MiniWeatherDay/>
-                        <MiniWeatherDay/>
-                        <MiniWeatherDay/>
-                    </div>
+                    <WeatherInfo temp_max={weather.main.temp_max} temp_min={weather.main.temp_min}
+                                 feels_like={weather.main.feels_like} wind={weather.wind.speed}
+                                 sunrise={weather.sys.sunrise} sunset={weather.sys.sunset}/>
                 </div>
-            </>
-        );
+                <div className="weather___for-five-days">
+                    <MiniWeatherCard/>
+                    <MiniWeatherCard/>
+                    <MiniWeatherCard/>
+                    <MiniWeatherCard/>
+                    <MiniWeatherCard/>
+                </div>
+            </div>
+        </>
+    );
+}
+function WeatherImageInfo({temp, description}) {
+    return(
+        <div className="weather__image-info">
+            <div className="weather__temp">{Math.round(temp)}°</div>
+            <div className="weather__sky">{description}</div>
+        </div>
+    )
 }
 
-function MiniWeatherDay() {
+
+function MiniWeatherCard() {
     return (
         <div className="weather__day">
             <div className="weatherIcon">
@@ -86,43 +59,5 @@ function MiniWeatherDay() {
     )
 }
 
-function WeatherImage() {
-    return (
-
-        <div className="weather-sun">
-            <div className="sun">
-                <div className="rays"></div>
-                <div className="rays"></div>
-                <div className="rays"></div>
-                <div className="rays"></div>
-            </div>
-        </div>
-        // <div className="weather-cloud">
-        //     <div className="cloud"></div>
-        //     <div className="cloud"></div>
-        // </div>
-        // <div className="weather-snow">
-        //     <div className="snow">
-        //         <div className="f"></div>
-        //     </div>
-        // </div>
-        // <div className="weather-cloudAndSun">
-        //     <div className="cloud"></div>
-        //     <div className="sun">
-        //         <div className="rays"></div>
-        //         <div className="rays"></div>
-        //         <div className="rays"></div>
-        //         <div className="rays"></div>
-        //     </div>
-        // </div>
-        // <div className="weather-rain">
-        //     <div className="cloud"></div>
-        //     <div className="rain"></div>
-        //     <div className="rain"></div>
-        //     <div className="rain"></div>
-        //     <div className="rain"></div>
-        // </div>
-    )
-}
 
 export default WeatherApp;

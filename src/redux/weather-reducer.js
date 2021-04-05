@@ -17,7 +17,7 @@ let initialState = {
         wind: {
             speed: null,
         },
-        weather: [{ description: ""}]
+        weather: [{ description: "", main: ""}]
         },
 }
 
