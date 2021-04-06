@@ -4,6 +4,7 @@ import {setWeather} from "../redux/weather-reducer";
 import WeatherApp from "./WeatherApp";
 import * as axios from "axios";
 import preloader from "../assets/images/preloader.svg"
+import {setFiveDaysWeather} from "../redux/fiveDaysWeather-reducer";
 
 class WeatherAppContainer extends React.Component {
     componentDidMount() {
@@ -14,7 +15,7 @@ class WeatherAppContainer extends React.Component {
         axios.get("http://api.openweathermap.org/data/2.5/forecast?q=Moscow&units=metric&appid=9e66b26ecdfc14c9acc56a4db3a671f2")
             .then(response => {
                 let result = response.data.list.filter(w => w.dt_txt.includes("12:00:00"))
-                let newArr = result.map(d => {
+                let fiveDaysWeather = result.map(d => {
                     return {
                         date: d.dt_txt,
                         temp: d.main.temp,
@@ -22,7 +23,7 @@ class WeatherAppContainer extends React.Component {
                         description: d.weather[0].description
                     }
                 })
-                console.log(newArr)
+                this.props.setFiveDaysWeather(fiveDaysWeather)
             })
     }
 
@@ -35,9 +36,10 @@ class WeatherAppContainer extends React.Component {
 
 let mapStateToProps = (state) => {
     return {
-        weather: state.weatherPage.weather
+        weather: state.weatherPage.weather,
+        fiveDaysWeather: state.fiveDaysWeather.fiveDaysWeather
     }
 }
 
 
-export default connect(mapStateToProps, {setWeather})(WeatherAppContainer)
+export default connect(mapStateToProps, {setWeather, setFiveDaysWeather})(WeatherAppContainer)
