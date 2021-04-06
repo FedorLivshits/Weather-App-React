@@ -3,9 +3,10 @@ import WeatherImage from "./WeatherImage/WeatherImage";
 import WeatherForm from "./WeatherForm/WeatherForm";
 import WeatherCityAndDate from "./WeatherCityAndDate/WeatherCityAndDate";
 import WeatherInfo from "./WeatherInfo/WeatherInfo";
+import DayWeatherCard from "./DayWeatherCard/DayWeatherCard";
 
 
-function WeatherApp({weather}) {
+function WeatherApp({weather, fiveDaysWeather}) {
 
     return (
         <>
@@ -25,11 +26,11 @@ function WeatherApp({weather}) {
                                  sunrise={weather.sys.sunrise} sunset={weather.sys.sunset}/>
                 </div>
                 <div className="weather___for-five-days">
-                    <MiniWeatherCard/>
-                    <MiniWeatherCard/>
-                    <MiniWeatherCard/>
-                    <MiniWeatherCard/>
-                    <MiniWeatherCard/>
+                    <DayWeatherCard day={fiveDaysWeather[0]} fiveDaysWeather={fiveDaysWeather}/>
+                    <DayWeatherCard day={fiveDaysWeather[1]} fiveDaysWeather={fiveDaysWeather}/>
+                    <DayWeatherCard day={fiveDaysWeather[2]} fiveDaysWeather={fiveDaysWeather}/>
+                    <DayWeatherCard day={fiveDaysWeather[3]} fiveDaysWeather={fiveDaysWeather}/>
+                    <DayWeatherCard day={fiveDaysWeather[4]} fiveDaysWeather={fiveDaysWeather}/>
                 </div>
             </div>
         </>
@@ -44,20 +45,6 @@ function WeatherImageInfo({temp, description}) {
     )
 }
 
-
-function MiniWeatherCard() {
-    return (
-        <div className="weather__day">
-            <div className="weatherIcon">
-                <div className="sunny">
-                    <div className="inner"></div>
-                </div>
-            </div>
-            <div className="day-temp">5°</div>
-            <div className="day-sky">sunny</div>
-        </div>
-    )
-}
 
 
 export default WeatherApp;

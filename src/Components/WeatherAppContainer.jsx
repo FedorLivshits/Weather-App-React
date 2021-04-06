@@ -1,10 +1,11 @@
 import React from "react";
 import {connect} from "react-redux";
 import {setWeather} from "../redux/weather-reducer";
+import {setFiveDaysWeather} from "../redux/fiveDaysWeather-reducer";
 import WeatherApp from "./WeatherApp";
 import * as axios from "axios";
 import preloader from "../assets/images/preloader.svg"
-import {setFiveDaysWeather} from "../redux/fiveDaysWeather-reducer";
+
 
 class WeatherAppContainer extends React.Component {
     componentDidMount() {
