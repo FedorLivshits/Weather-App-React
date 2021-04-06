@@ -2,7 +2,7 @@ import React from "react";
 import icon from "../../assets/images/search-icon.svg"
 
 
-function WeatherForm({updateInputText}) {
+function WeatherForm({updateInputText, getWeather}) {
 
     const inputCity = (event) => {
         let city = event.target.value
