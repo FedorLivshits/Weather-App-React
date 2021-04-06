@@ -9,11 +9,11 @@ import preloader from "../assets/images/preloader.svg"
 
 class WeatherAppContainer extends React.Component {
     componentDidMount() {
-        axios.get("http://api.openweathermap.org/data/2.5/weather?q=Moscow&units=metric&appid=9e66b26ecdfc14c9acc56a4db3a671f2")
+        axios.get("http://api.openweathermap.org/data/2.5/weather?q=Saint%20Petersburg&units=metric&appid=9e66b26ecdfc14c9acc56a4db3a671f2")
             .then(response => {
                 this.props.setWeather(response.data)
             })
-        axios.get("http://api.openweathermap.org/data/2.5/forecast?q=Moscow&units=metric&appid=9e66b26ecdfc14c9acc56a4db3a671f2")
+        axios.get("http://api.openweathermap.org/data/2.5/forecast?q=Saint%20Petersburg&units=metric&appid=9e66b26ecdfc14c9acc56a4db3a671f2")
             .then(response => {
                 let result = response.data.list.filter(w => w.dt_txt.includes("12:00:00"))
                 let fiveDaysWeather = result.map(d => {

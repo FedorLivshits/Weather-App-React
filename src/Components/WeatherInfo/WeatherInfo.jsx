@@ -12,6 +12,9 @@ function WeatherInfo({temp_max, temp_min, feels_like, wind, sunset, sunrise}) {
         date.setTime(sunrise)
         return date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds()
     }
+    let tempMax = Math.round(temp_max)
+    let tempMin = Math.round(temp_min)
+    let feelsLike = Math.round(feels_like)
 
     return (
     <div className="weather__info">
@@ -19,10 +22,10 @@ function WeatherInfo({temp_max, temp_min, feels_like, wind, sunset, sunrise}) {
             <ul className="column">
                 <li>
                     <span> Max-temp: </span>
-                   {temp_max}°
+                   {tempMax}°
                 </li>
-                <li><span> Min-temp: </span>{temp_min}° </li>
-                <li><span> Feels like: </span>{feels_like}° </li>
+                <li><span> Min-temp: </span>{tempMin}° </li>
+                <li><span> Feels like: </span>{feelsLike}° </li>
             </ul>
         </div>
         <div className="column-2">

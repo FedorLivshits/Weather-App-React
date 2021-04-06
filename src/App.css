@@ -75,14 +75,15 @@ header{
 
 .weather__image{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
     color: white;
     font-size: 30px;
    width: 50%;
-
 }
+
 .weather__image-info{
-    margin-left: 40px;
+    /*margin-left: 40px;*/
 }
 .weather__temp{
     font-size: 50px;
@@ -90,6 +91,7 @@ header{
 .weather__description{
     font-size: 25px;
 }
+
 .weather__info{
     background: #ffffff;
     width: 50%;
