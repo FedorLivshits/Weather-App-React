@@ -1,64 +1,63 @@
 import React from "react";
-import "./DayWeatherCard.css"
+import classes from "./DayWeatherCard.module.css"
 
 
 function DayWeatherCard({day, fiveDaysWeather}) {
-    let temp = Math.round(day.temp)
-
     if (fiveDaysWeather.length) {
+        let temp = Math.round(day.temp)
         switch (day.mainDescription) {
             case "Clear":
-                return   <div className="weather__day">
-                    <div className="weatherIcon">
-                        <div className="sunny">
-                            <div className="inner"></div>
+                return   <div className={classes.weather__day}>
+                    <div className={classes.weatherIcon}>
+                        <div className={classes.sunny}>
+                            <div className={classes.inner}></div>
                         </div>
                     </div>
-                    <div className="day-temp">{temp}°</div>
-                    <div className="day-sky">{day.description}</div>
+                    <div className={classes["day-temp"]}>{temp}°</div>
+                    <div className={classes["day-sky"]}>{day.description}</div>
                 </div>
             case "Clouds":
-                return <div className="weather__day">
-                    <div className="weatherIcon">
-                        <div className="cloudy">
-                            <div className="inner"></div>
+                return <div className={classes.weather__day}>
+                    <div className={classes.weatherIcon}>
+                        <div className={classes.cloudy}>
+                            <div className={classes.inner}></div>
                         </div>
                     </div>
-                    <div className="day-temp">{temp}°</div>
-                    <div className="day-sky">{day.description}</div>
+                    <div className={classes["day-temp"]}>{temp}°</div>
+                    <div className={classes["day-sky"]}>{day.description}</div>
                 </div>
             case "Rain":
-                return <div className="weather__day">
-                    <div className="weatherIcon">
-                        <div className="rain">
-                            <div className="inner"></div>
+                return <div className={classes.weather__day}>
+                    <div className={classes.weatherIcon}>
+                        <div className={classes.rain}>
+                            <div className={classes.inner}></div>
                         </div>
                     </div>
-                    <div className="day-temp">{temp}°</div>
-                    <div className="day-sky">{day.description}</div>
+                    <div className={classes["day-temp"]}>{temp}°</div>
+                    <div className={classes["day-sky"]}>{day.description}</div>
                 </div>
             case "Snow":
-                return <div className="weather__day">
-                    <div className="weatherIcon">
-                        <div className="snow">
-                            <div className="inner"></div>
+                return <div className={classes.weather__day}>
+                    <div className={classes.weatherIcon}>
+                        <div className={classes.snow}>
+                            <div className={classes.inner}></div>
                         </div>
                     </div>
-                    <div className="day-temp">{temp}°</div>
-                    <div className="day-sky">{day.description}</div>
+                    <div className={classes["day-temp"]}>{temp}°</div>
+                    <div className={classes["day-sky"]}>{day.description}</div>
                 </div>
             default:
                 return ""
         }
     } else {
-        return <div className="weather__day">
-            <div className="weatherIcon">
-                <div className="sunny">
-                    <div className="inner"></div>
+        return <div className={classes.weather__day}>
+            <div className={classes.weatherIcon}>
+                <div className={classes.sunny}>
+                    <div className={classes.inner}></div>
                 </div>
             </div>
-            <div className="day-temp">load</div>
-            <div className="day-sky">load</div>
+            <div className={classes["day-temp"]}>load</div>
+            <div className={classes["day-sky"]}>load</div>
         </div>
     }
 }
