@@ -3,6 +3,8 @@ import "./DayWeatherCard.css"
 
 
 function DayWeatherCard({day, fiveDaysWeather}) {
+    let temp = Math.round(day.temp)
+
     if (fiveDaysWeather.length) {
         switch (day.mainDescription) {
             case "Clear":
@@ -12,7 +14,7 @@ function DayWeatherCard({day, fiveDaysWeather}) {
                             <div className="inner"></div>
                         </div>
                     </div>
-                    <div className="day-temp">{day.temp}°</div>
+                    <div className="day-temp">{temp}°</div>
                     <div className="day-sky">{day.description}</div>
                 </div>
             case "Clouds":
@@ -22,7 +24,7 @@ function DayWeatherCard({day, fiveDaysWeather}) {
                             <div className="inner"></div>
                         </div>
                     </div>
-                    <div className="day-temp">{day.temp}°</div>
+                    <div className="day-temp">{temp}°</div>
                     <div className="day-sky">{day.description}</div>
                 </div>
             case "Rain":
@@ -32,7 +34,7 @@ function DayWeatherCard({day, fiveDaysWeather}) {
                             <div className="inner"></div>
                         </div>
                     </div>
-                    <div className="day-temp">{day.temp}°</div>
+                    <div className="day-temp">{temp}°</div>
                     <div className="day-sky">{day.description}</div>
                 </div>
             case "Snow":
@@ -42,7 +44,7 @@ function DayWeatherCard({day, fiveDaysWeather}) {
                             <div className="inner"></div>
                         </div>
                     </div>
-                    <div className="day-temp">{day.temp}°</div>
+                    <div className="day-temp">{temp}°</div>
                     <div className="day-sky">{day.description}</div>
                 </div>
             default:

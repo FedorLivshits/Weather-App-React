@@ -1,4 +1,6 @@
 const SET_WEATHER = 'SET_WEATHER';
+const UPDATE_INPUT_TEXT = 'UPDATE_INPUT_TEXT';
+
 
 let initialState = {
     weather: {
@@ -19,6 +21,7 @@ let initialState = {
         },
         weather: [{ description: "", main: ""}]
         },
+    updateInputText: ""
 }
 
 const weatherReducer = (state = initialState, action) => {
@@ -26,12 +29,16 @@ const weatherReducer = (state = initialState, action) => {
         case SET_WEATHER: {
             return {...state, weather: action.weather}
         }
+        case UPDATE_INPUT_TEXT: {
+            return {...state, updateInputText: action.text}
+        }
         default:
             return state;
     }
 }
 
 export const setWeather = (weather) => ({type: SET_WEATHER, weather});
+export const updateInputText = (text) => ({type: UPDATE_INPUT_TEXT, text});
 
 export default weatherReducer;
 

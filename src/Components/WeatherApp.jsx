@@ -4,15 +4,16 @@ import WeatherForm from "./WeatherForm/WeatherForm";
 import WeatherCityAndDate from "./WeatherCityAndDate/WeatherCityAndDate";
 import WeatherInfo from "./WeatherInfo/WeatherInfo";
 import DayWeatherCard from "./DayWeatherCard/DayWeatherCard";
+import {updateInputText} from "../redux/weather-reducer";
 
 
-function WeatherApp({weather, fiveDaysWeather}) {
+function WeatherApp({weather, fiveDaysWeather, updateInputText}) {
 
     return (
         <>
             <header>Weather App</header>
             <div className="container">
-                <WeatherForm/>
+                <WeatherForm updateInputText={updateInputText}/>
                 <WeatherCityAndDate city={weather.name} country={weather.sys.country}/>
 
                 <div className="weather__content">

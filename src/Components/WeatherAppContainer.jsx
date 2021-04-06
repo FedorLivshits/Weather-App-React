@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import {setWeather} from "../redux/weather-reducer";
+import {setWeather, updateInputText} from "../redux/weather-reducer";
 import {setFiveDaysWeather} from "../redux/fiveDaysWeather-reducer";
 import WeatherApp from "./WeatherApp";
 import * as axios from "axios";
@@ -43,4 +43,4 @@ let mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, {setWeather, setFiveDaysWeather})(WeatherAppContainer)
+export default connect(mapStateToProps, {setWeather, setFiveDaysWeather, updateInputText})(WeatherAppContainer)
