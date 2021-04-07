@@ -25,11 +25,16 @@ class WeatherAppContainer extends React.Component {
             this.props.setFiveDaysWeather(fiveDaysWeather)
         })
     }
-
+    isNotEmpty = (obj) => {
+        for (let key in obj) {
+            return true;
+        }
+        return false;
+    }
 
     render() {
         return (
-            <WeatherApp {...this.props} getAllWeather={this.getAllWeather}/>
+            <WeatherApp {...this.props} getAllWeather={this.getAllWeather} isNotEmpty={this.isNotEmpty}/>
         );
     }
 }
