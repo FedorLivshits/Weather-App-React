@@ -11,10 +11,16 @@ function WeatherForm({updateInputText, getAllWeather}) {
     const searchCity = () => {
         getAllWeather()
     }
+    const enterCity = (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault()
+            getAllWeather()
+        }
+    }
 
     return (
         <form className="inputField">
-            <input type="text" placeholder="Enter city" onChange={inputCity}/>
+            <input type="text" placeholder="Enter city" onChange={inputCity} onKeyPress={enterCity}/>
             <img src={icon} alt="" onClick={searchCity}/>
 
         </form>

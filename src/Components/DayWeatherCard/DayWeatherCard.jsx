@@ -20,11 +20,7 @@ function DayWeatherCard({day, fiveDaysWeather}) {
         }
     }
     if (!fiveDaysWeather.length) {
-        return <div className={classes.weather__day}>
-            <div className={classes.weatherIcon}>
-                <img src={preloader} alt=""/>
-            </div>
-        </div>
+        return ""
     }
 }
 

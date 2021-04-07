@@ -3,7 +3,6 @@ import {connect} from "react-redux";
 import {setWeather, updateInputText} from "../redux/weather-reducer";
 import {setFiveDaysWeather} from "../redux/fiveDaysWeather-reducer";
 import WeatherApp from "./WeatherApp";
-import preloader from "../assets/images/preloader.svg"
 import {getFiveDaysWeather, getWeather} from "../api/api";
 
 
