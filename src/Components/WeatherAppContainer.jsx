@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import {setWeather, updateInputText} from "../redux/weather-reducer";
+import {setWeather, toggleIsFetching, updateInputText} from "../redux/weather-reducer";
 import {setFiveDaysWeather} from "../redux/fiveDaysWeather-reducer";
 import WeatherApp from "./WeatherApp";
 import {getFiveDaysWeather, getWeather} from "../api/api";
@@ -9,10 +9,14 @@ import {getFiveDaysWeather, getWeather} from "../api/api";
 function WeatherAppContainer(props) {
 
     const getAllWeather = () => {
+        props.toggleIsFetching(true)
         getWeather(props.updateTextInput).then(data => {
+            props.toggleIsFetching(false)
             props.setWeather(data)
         })
+        props.toggleIsFetching(true)
         getFiveDaysWeather(props.updateTextInput).then(data => {
+            props.toggleIsFetching(false)
             let result = data.list.filter(w => w.dt_txt.includes("12:00:00"))
             let fiveDaysWeather = result.map(d => {
                 return {
@@ -41,9 +45,10 @@ let mapStateToProps = (state) => {
     return {
         weather: state.weatherPage.weather,
         updateTextInput: state.weatherPage.updateTextInput,
-        fiveDaysWeather: state.fiveDaysWeather.fiveDaysWeather
+        fiveDaysWeather: state.fiveDaysWeather.fiveDaysWeather,
+        isFetching: state.weatherPage.isFetching
     }
 }
 
 
-export default connect(mapStateToProps, {setWeather, setFiveDaysWeather, updateInputText})(WeatherAppContainer)
+export default connect(mapStateToProps, {setWeather, setFiveDaysWeather, updateInputText, toggleIsFetching})(WeatherAppContainer)

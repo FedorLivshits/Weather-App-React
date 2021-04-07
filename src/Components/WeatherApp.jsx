@@ -6,13 +6,14 @@ import WeatherInfo from "./WeatherInfo/WeatherInfo";
 import DayWeatherCard from "./DayWeatherCard/DayWeatherCard";
 
 
-function WeatherApp({weather, fiveDaysWeather, updateInputText, getAllWeather, isNotEmpty}) {
+function WeatherApp({weather, fiveDaysWeather, updateInputText, getAllWeather, isNotEmpty, isFetching}) {
 
     return (
         <>
             <header>Weather App</header>
             <div className="container">
-                <WeatherForm updateInputText={updateInputText} getAllWeather={getAllWeather} fiveDaysWeather={fiveDaysWeather}/>
+                <WeatherForm updateInputText={updateInputText} getAllWeather={getAllWeather}
+                             fiveDaysWeather={fiveDaysWeather} isFetching={isFetching}/>
 
                 {(fiveDaysWeather.length && isNotEmpty(weather))
                     ?
@@ -40,7 +41,7 @@ function WeatherApp({weather, fiveDaysWeather, updateInputText, getAllWeather, i
                         </div>
                     </>
                     :
-                  "" }
+                    ""}
             </div>
         </>
     );

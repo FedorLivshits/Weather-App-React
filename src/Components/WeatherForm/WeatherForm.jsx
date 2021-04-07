@@ -1,9 +1,9 @@
 import React from "react";
 import icon from "../../assets/images/search-icon.svg"
-import Preloader from "../Preloader/Preloader";
+import preloader from "../../assets/images/preloader.svg"
 
 
-function WeatherForm({updateInputText, getAllWeather}) {
+function WeatherForm({updateInputText, getAllWeather, isFetching}) {
 
     const inputCity = (event) => {
         let city = event.target.value
@@ -22,7 +22,12 @@ function WeatherForm({updateInputText, getAllWeather}) {
     return (
         <form className="inputField">
             <input type="text" placeholder="Enter city" onChange={inputCity} onKeyPress={enterCity}/>
-            <img src={icon} alt="" onClick={searchCity}/>
+            {isFetching
+                ?
+                <img className="preloader" src={preloader} alt=""/>
+               :
+                <img src={icon} alt="" onClick={searchCity}/>
+            }
         </form>
 
     )

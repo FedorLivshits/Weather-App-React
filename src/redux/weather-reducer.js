@@ -1,5 +1,6 @@
 const SET_WEATHER = 'SET_WEATHER';
 const UPDATE_INPUT_TEXT = 'UPDATE_INPUT_TEXT';
+const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 
 
 let initialState = {
@@ -21,7 +22,8 @@ let initialState = {
         },
         weather: [{ description: "", main: ""}]
         },
-    updateTextInput: ""
+    updateTextInput: "",
+    isFetching: false
 }
 
 const weatherReducer = (state = initialState, action) => {
@@ -32,6 +34,9 @@ const weatherReducer = (state = initialState, action) => {
         case UPDATE_INPUT_TEXT: {
             return {...state, updateTextInput: action.text}
         }
+        case TOGGLE_IS_FETCHING: {
+            return {...state, isFetching: action.isFetching}
+        }
         default:
             return state;
     }
@@ -39,6 +44,7 @@ const weatherReducer = (state = initialState, action) => {
 
 export const setWeather = (weather) => ({type: SET_WEATHER, weather});
 export const updateInputText = (text) => ({type: UPDATE_INPUT_TEXT, text});
+export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
 
 export default weatherReducer;
 
