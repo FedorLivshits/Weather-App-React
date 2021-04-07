@@ -12,7 +12,7 @@ function WeatherApp({weather, fiveDaysWeather, updateInputText, getAllWeather, i
         <>
             <header>Weather App</header>
             <div className="container">
-                <WeatherForm updateInputText={updateInputText} getAllWeather={getAllWeather}/>
+                <WeatherForm updateInputText={updateInputText} getAllWeather={getAllWeather} fiveDaysWeather={fiveDaysWeather}/>
 
                 {(fiveDaysWeather.length && isNotEmpty(weather))
                     ?
@@ -40,7 +40,7 @@ function WeatherApp({weather, fiveDaysWeather, updateInputText, getAllWeather, i
                         </div>
                     </>
                     :
-                    ""}
+                  "" }
             </div>
         </>
     );

@@ -1,5 +1,6 @@
 import React from "react";
 import icon from "../../assets/images/search-icon.svg"
+import Preloader from "../Preloader/Preloader";
 
 
 function WeatherForm({updateInputText, getAllWeather}) {
@@ -22,8 +23,8 @@ function WeatherForm({updateInputText, getAllWeather}) {
         <form className="inputField">
             <input type="text" placeholder="Enter city" onChange={inputCity} onKeyPress={enterCity}/>
             <img src={icon} alt="" onClick={searchCity}/>
-
         </form>
+
     )
 }
 
