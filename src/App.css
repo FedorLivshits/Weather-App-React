@@ -73,13 +73,17 @@ header{
     justify-content: space-around;
 }
 
-.weather__image{
+.weather__image-inner{
     display: flex;
     justify-content: space-around;
     align-items: center;
     color: white;
     font-size: 30px;
-   width: 50%;
+    width: 50%;
+}
+.weather__image{
+    width: 200px;
+    height: 200px;
 }
 
 .weather__image-info{

@@ -8,28 +8,29 @@ import {getFiveDaysWeather, getWeather} from "../api/api";
 
 
 class WeatherAppContainer extends React.Component {
-    componentDidMount() {
-        getWeather().then(response => {
-                    this.props.setWeather(response.data)
-                })
-        getFiveDaysWeather().then(response => {
-                    let result = response.data.list.filter(w => w.dt_txt.includes("12:00:00"))
-                    let fiveDaysWeather = result.map(d => {
-                        return {
-                            date: d.dt_txt,
-                            temp: d.main.temp,
-                            mainDescription: d.weather[0].main,
-                            description: d.weather[0].description
-                        }
-                    })
-                    this.props.setFiveDaysWeather(fiveDaysWeather)
-                })
 
+    getAllWeather = () => {
+        getWeather(this.props.updateTextInput).then(data => {
+            this.props.setWeather(data)
+        })
+        getFiveDaysWeather(this.props.updateTextInput).then(data => {
+            let result = data.list.filter(w => w.dt_txt.includes("12:00:00"))
+            let fiveDaysWeather = result.map(d => {
+                return {
+                    date: d.dt_txt,
+                    temp: d.main.temp,
+                    mainDescription: d.weather[0].main,
+                    description: d.weather[0].description
+                }
+            })
+            this.props.setFiveDaysWeather(fiveDaysWeather)
+        })
     }
+
 
     render() {
         return (
-            <WeatherApp {...this.props} />
+            <WeatherApp {...this.props} getAllWeather={this.getAllWeather}/>
         );
     }
 }
@@ -37,6 +38,7 @@ class WeatherAppContainer extends React.Component {
 let mapStateToProps = (state) => {
     return {
         weather: state.weatherPage.weather,
+        updateTextInput: state.weatherPage.updateTextInput,
         fiveDaysWeather: state.fiveDaysWeather.fiveDaysWeather
     }
 }

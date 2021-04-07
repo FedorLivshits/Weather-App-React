@@ -1,7 +1,6 @@
-
 .weather-sun,.weather-cloud,.weather-snow,.weather-cloudAndSun,.weather-rain{
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     display: inline-block;
     position: relative;
 }
@@ -9,6 +8,7 @@
 .weather-cloudAndSun,.weather-rain{
     margin-left: 60px;
 }
+
 .sun{
     width: 100px;
     height: 100px;
@@ -17,8 +17,8 @@
     transform: rotate(0deg);
     animation: xuanzhuang 12s infinite linear;
     position: absolute;
-    left: 40%;
-    top: 10%;
+    left: 50%;
+    top: 50%;
 }
 
 .rays{

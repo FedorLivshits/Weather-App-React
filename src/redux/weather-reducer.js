@@ -21,7 +21,7 @@ let initialState = {
         },
         weather: [{ description: "", main: ""}]
         },
-    updateInputText: ""
+    updateTextInput: ""
 }
 
 const weatherReducer = (state = initialState, action) => {
@@ -30,7 +30,7 @@ const weatherReducer = (state = initialState, action) => {
             return {...state, weather: action.weather}
         }
         case UPDATE_INPUT_TEXT: {
-            return {...state, updateInputText: action.text}
+            return {...state, updateTextInput: action.text}
         }
         default:
             return state;
