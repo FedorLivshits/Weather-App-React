@@ -11,6 +11,11 @@ function WeatherCityAndDate({city, country}) {
                 {new Date().getDate()}
                 {" "}
                 {new Date().toLocaleString('en', {month: 'long'})}
+                {" "}
+                <div className="time">
+
+                </div>
+
             </div>
         </div>
     )

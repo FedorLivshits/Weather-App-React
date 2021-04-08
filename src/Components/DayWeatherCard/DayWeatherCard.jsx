@@ -1,6 +1,6 @@
 import React from "react";
 import classes from "./DayWeatherCard.module.css"
-import preloader from "../../assets/images/preloader.svg"
+
 
 function DayWeatherCard({day, fiveDaysWeather}) {
     if (fiveDaysWeather.length) {
