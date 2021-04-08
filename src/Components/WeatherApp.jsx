@@ -6,7 +6,7 @@ import WeatherInfo from "./WeatherInfo/WeatherInfo";
 import DayWeatherCard from "./DayWeatherCard/DayWeatherCard";
 
 
-function WeatherApp({weather, fiveDaysWeather, updateInputText, getAllWeather, isNotEmpty, isFetching}) {
+function WeatherApp({weather, fiveDaysWeather, updateInputText, getAllWeather, isNotEmptyObj, isFetching}) {
 
     return (
         <>
@@ -15,7 +15,7 @@ function WeatherApp({weather, fiveDaysWeather, updateInputText, getAllWeather, i
                 <WeatherForm updateInputText={updateInputText} getAllWeather={getAllWeather}
                              fiveDaysWeather={fiveDaysWeather} isFetching={isFetching}/>
 
-                {(fiveDaysWeather.length && isNotEmpty(weather))
+                {(fiveDaysWeather.length && isNotEmptyObj(weather))
                     ?
                     <>
                         <WeatherCityAndDate city={weather.name} country={weather.sys.country}/>
