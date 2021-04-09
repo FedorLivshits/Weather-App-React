@@ -1,6 +1,7 @@
 import React from "react";
 import icon from "../../assets/images/search-icon.svg"
 import preloader from "../../assets/images/preloader.svg"
+import classes from "./WeatherForm.module.css"
 
 
 function WeatherForm({updateInputText, getAllWeather, isFetching}) {
@@ -20,16 +21,16 @@ function WeatherForm({updateInputText, getAllWeather, isFetching}) {
     }
 
     return (
-        <form className="inputField">
+        <form className={classes.inputField}>
             <input type="text" placeholder="Enter city" onChange={inputCity} onKeyPress={enterCity}/>
-            {isFetching
-                ?
-                <img className="preloader" src={preloader} alt=""/>
-               :
+            {
+                isFetching
+                    ?
+                <img className={classes.preloader} src={preloader} alt=""/>
+                    :
                 <img src={icon} alt="" onClick={searchCity}/>
             }
         </form>
-
     )
 }
 

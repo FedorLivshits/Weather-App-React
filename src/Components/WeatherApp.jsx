@@ -1,5 +1,6 @@
 import React from "react";
-import WeatherImage from "./WeatherImage/WeatherImage";
+import {WeatherImage} from "./WeatherImage/WeatherImage";
+import {WeatherImageInfo} from "./WeatherImage/WeatherImage";
 import WeatherForm from "./WeatherForm/WeatherForm";
 import WeatherCityAndDate from "./WeatherCityAndDate/WeatherCityAndDate";
 import WeatherInfo from "./WeatherInfo/WeatherInfo";
@@ -15,7 +16,8 @@ function WeatherApp({weather, fiveDaysWeather, updateInputText, getAllWeather, i
                 <WeatherForm updateInputText={updateInputText} getAllWeather={getAllWeather}
                              fiveDaysWeather={fiveDaysWeather} isFetching={isFetching}/>
 
-                {(fiveDaysWeather.length && isNotEmptyObj(weather))
+                {
+                    (fiveDaysWeather.length && isNotEmptyObj(weather))
                     ?
                     <>
                         <WeatherCityAndDate city={weather.name} country={weather.sys.country}/>
@@ -40,21 +42,12 @@ function WeatherApp({weather, fiveDaysWeather, updateInputText, getAllWeather, i
                             <DayWeatherCard day={fiveDaysWeather[4]} fiveDaysWeather={fiveDaysWeather}/>
                         </div>
                     </>
-                    :
-                    ""}
+                        :
+                    ""
+                }
             </div>
         </>
     );
 }
-
-function WeatherImageInfo({temp, description}) {
-    return (
-        <div className="weather__image-info">
-            <div className="weather__temp">{Math.round(temp)}°</div>
-            <div className="weather__description">{description}</div>
-        </div>
-    )
-}
-
 
 export default WeatherApp;

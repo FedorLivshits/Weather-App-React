@@ -5,7 +5,7 @@ import classes from "./DayWeatherCard.module.css"
 function DayWeatherCard({day, fiveDaysWeather}) {
     if (fiveDaysWeather.length) {
         let temp = Math.round(day.temp)
-        let date = day.date.slice(5,10).split("-").reverse().join(".")
+        let date = day.date.slice(5, 10).split("-").reverse().join(".")
         switch (day.mainDescription) {
             case "Clear":
                 return <ClearSun temp={temp} description={day.description} date={date}/>
@@ -30,7 +30,7 @@ function ClearSun({temp, description, date}) {
             <div className={classes["day-date"]}>{date}</div>
             <div className={classes.weatherIcon}>
                 <div className={classes.sunny}>
-                    <div className={classes.inner}></div>
+                    <div className={classes.inner}/>
                 </div>
             </div>
             <div className={classes["day-temp"]}>{temp}°</div>
@@ -45,7 +45,7 @@ function Clouds({temp, description, date}) {
             <div className={classes["day-date"]}>{date}</div>
             <div className={classes.weatherIcon}>
                 <div className={classes.cloudy}>
-                    <div className={classes.inner}></div>
+                    <div className={classes.inner}/>
                 </div>
             </div>
             <div className={classes["day-temp"]}>{temp}°</div>
@@ -53,13 +53,14 @@ function Clouds({temp, description, date}) {
         </div>
     )
 }
+
 function Rain({temp, description, date}) {
     return (
         <div className={classes.weather__day}>
             <div className={classes["day-date"]}>{date}</div>
             <div className={classes.weatherIcon}>
                 <div className={classes.rain}>
-                    <div className={classes.inner}></div>
+                    <div className={classes.inner}/>
                 </div>
             </div>
             <div className={classes["day-temp"]}>{temp}°</div>
@@ -67,13 +68,14 @@ function Rain({temp, description, date}) {
         </div>
     )
 }
+
 function Snow({temp, description, date}) {
     return (
         <div className={classes.weather__day}>
             <div className={classes["day-date"]}>{date}</div>
             <div className={classes.weatherIcon}>
                 <div className={classes.snow}>
-                    <div className={classes.inner}></div>
+                    <div className={classes.inner}/>
                 </div>
             </div>
             <div className={classes["day-temp"]}>{temp}°</div>

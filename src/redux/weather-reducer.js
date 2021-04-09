@@ -67,13 +67,18 @@ export const getAllWeatherTC = (city) =>  {
                     date: d.dt_txt,
                     temp: d.main.temp,
                     mainDescription: d.weather[0].main,
-                    description: d.weather[0].description
+                    description: d.weather[0].description,
+                    temp_min: d.main.temp_min,
+                    temp_max: d.main.temp_max,
+                    feels_like: d.main.feels_like,
+                    wind: d.wind.speed,
                 }
             })
             dispatch(setFiveDaysWeather(fiveDaysWeather))
         })
     }
 }
+
 
 
 export default weatherReducer;

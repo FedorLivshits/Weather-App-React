@@ -1,21 +1,17 @@
 import React from "react";
-
+import classes from "./WeatherCityAndDate.module.css"
 
 function WeatherCityAndDate({city, country}) {
     return (
-        <div className="city__and__date">
-            <div className="city-name">{city}, {country}</div>
-            <div className="date">
+        <div className={classes.city__and__date}>
+            <div className={classes["city-name"]}>{city}, {country}</div>
+            <div className={classes.date}>
                 {new Date().toLocaleString('en', {weekday: 'long'})}
                 {" "}
                 {new Date().getDate()}
                 {" "}
                 {new Date().toLocaleString('en', {month: 'long'})}
                 {" "}
-                <div className="time">
-
-                </div>
-
             </div>
         </div>
     )
