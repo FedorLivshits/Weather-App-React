@@ -1,6 +1,6 @@
 import {applyMiddleware, combineReducers, compose, createStore} from "redux";
-import weatherReducer from "./weather-reducer";
-import fiveDaysWeatherReducer from "./fiveDaysWeather-reducer";
+import weatherReducer from "./reducers/weather-reducer";
+import fiveDaysWeatherReducer from "./reducers/fiveDaysWeather-reducer";
 import thunkMiddleware from "redux-thunk"
 
 let reducers = combineReducers({

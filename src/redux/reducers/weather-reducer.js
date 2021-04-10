@@ -1,4 +1,4 @@
-import {getFiveDaysWeather, getWeather} from "../api/api";
+import {getFiveDaysWeather, getWeather} from "../../api/api";
 import {setFiveDaysWeather} from "./fiveDaysWeather-reducer"
 
 const SET_WEATHER = 'SET_WEATHER';

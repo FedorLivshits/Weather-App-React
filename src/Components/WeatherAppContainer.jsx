@@ -5,9 +5,10 @@ import {
     setWeather,
     toggleIsFetching,
     updateInputText
-} from "../redux/weather-reducer";
-import {setFiveDaysWeather} from "../redux/fiveDaysWeather-reducer";
+} from "../redux/reducers/weather-reducer";
+import {setFiveDaysWeather} from "../redux/reducers/fiveDaysWeather-reducer";
 import WeatherApp from "./WeatherApp";
+import {getCityName, getFiveDaysWeather, getIsFetching, getWeather} from "../redux/selectors/selectors";
 
 
 function WeatherAppContainer({weather, fiveDaysWeather, updateInputText, isFetching, getAllWeatherTC, cityName}) {
@@ -32,10 +33,10 @@ function WeatherAppContainer({weather, fiveDaysWeather, updateInputText, isFetch
 
 let mapStateToProps = (state) => {
     return {
-        weather: state.weatherPage.weather,
-        cityName: state.weatherPage.updateTextInput,
-        fiveDaysWeather: state.fiveDaysWeather.fiveDaysWeather,
-        isFetching: state.weatherPage.isFetching
+        weather: getWeather(state),
+        cityName: getCityName(state),
+        fiveDaysWeather: getFiveDaysWeather(state),
+        isFetching: getIsFetching(state)
     }
 }
 
