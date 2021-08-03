@@ -8,14 +8,14 @@ const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 
 let initialState = {
     weather: {
-        name: undefined,
+        name: null,
         sys: {
-            country: undefined,
-            sunrise: undefined,
-            sunset: undefined,
+            country: null,
+            sunrise: null,
+            sunset: null,
         },
-        main:{
-            temp: undefined,
+        main: {
+            temp: null,
             temp_max: null,
             temp_min: null,
             feels_like: null,
@@ -23,8 +23,8 @@ let initialState = {
         wind: {
             speed: null,
         },
-        weather: [{ description: "", main: ""}]
-        },
+        weather: [{description: "", main: ""}]
+    },
     updateTextInput: "",
     isFetching: false
 }
@@ -50,35 +50,36 @@ export const updateInputText = (text) => ({type: UPDATE_INPUT_TEXT, text});
 export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
 
 
-export const getAllWeatherTC = (city) =>  {
-   return  (dispatch) => {
+export const getAllWeatherTC = (city) => {
+    return (dispatch) => {
         dispatch(toggleIsFetching(true))
-        getWeather(city).then(data=> {
-            dispatch(toggleIsFetching(false))
-            dispatch(setWeather(data))
-        })
+        getWeather(city)
+            .then(data => {
+                dispatch(toggleIsFetching(false))
+                dispatch(setWeather(data))
+            })
 
         dispatch(toggleIsFetching(true))
-        getFiveDaysWeather(city).then(data => {
-            dispatch(toggleIsFetching(false))
-            let result = data.list.filter(w => w.dt_txt.includes("12:00:00"))
-            let fiveDaysWeather = result.map(d => {
-                return {
-                    date: d.dt_txt,
-                    temp: d.main.temp,
-                    mainDescription: d.weather[0].main,
-                    description: d.weather[0].description,
-                    temp_min: d.main.temp_min,
-                    temp_max: d.main.temp_max,
-                    feels_like: d.main.feels_like,
-                    wind: d.wind.speed,
-                }
+        getFiveDaysWeather(city)
+            .then(data => {
+                dispatch(toggleIsFetching(false))
+                let result = data.list.filter(w => w['dt_txt'].includes("12:00:00"))
+                let fiveDaysWeather = result.map(d => {
+                    return {
+                        date: d['dt_txt'],
+                        temp: d.main.temp,
+                        mainDescription: d.weather[0].main,
+                        description: d.weather[0].description,
+                        temp_min: d.main.temp_min,
+                        temp_max: d.main.temp_max,
+                        feels_like: d.main.feels_like,
+                        wind: d.wind.speed,
+                    }
+                })
+                dispatch(setFiveDaysWeather(fiveDaysWeather))
             })
-            dispatch(setFiveDaysWeather(fiveDaysWeather))
-        })
     }
 }
-
 
 
 export default weatherReducer;
