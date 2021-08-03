@@ -46,15 +46,6 @@ header {
     width: 50%;
 }
 
-/*.weather__image {*/
-/*    width: 200px;*/
-/*    height: 200px;*/
-/*}*/
-
-.weather__image-info {
-    /*margin-left: 40px;*/
-}
-
 .weather__temp {
     font-size: 50px;
 }
