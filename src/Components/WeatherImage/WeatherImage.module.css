@@ -232,3 +232,10 @@
         top: 200px;
     }
 }
+
+@media(max-width: 465px){
+    .weather-sun,.weather-cloud,.weather-snow,.weather-cloudAndSun,.weather-rain{
+        top: -85px;
+        left: -75px;
+    }
+}

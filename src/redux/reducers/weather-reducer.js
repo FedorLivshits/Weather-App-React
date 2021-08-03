@@ -11,17 +11,17 @@ let initialState = {
         name: null,
         sys: {
             country: null,
-            sunrise: null,
-            sunset: null,
         },
         main: {
             temp: null,
             temp_max: null,
             temp_min: null,
             feels_like: null,
+            humidity: null,
         },
         wind: {
             speed: null,
+            gust: null
         },
         weather: [{description: "", main: ""}]
     },
@@ -56,6 +56,7 @@ export const getAllWeatherTC = (city) => {
         getWeather(city)
             .then(data => {
                 dispatch(toggleIsFetching(false))
+                console.log(data)
                 dispatch(setWeather(data))
             })
 

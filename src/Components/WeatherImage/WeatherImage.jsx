@@ -2,7 +2,7 @@ import React from "react";
 import  classes from "./WeatherImage.module.css"
 
 
-export function WeatherImage({weatherDescription}) {
+export const WeatherImage = ({weatherDescription}) => {
 
         switch (weatherDescription) {
             case "Clear":
