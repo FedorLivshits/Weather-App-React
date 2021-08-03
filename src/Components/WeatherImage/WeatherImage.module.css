@@ -1,12 +1,10 @@
 .weather-sun,.weather-cloud,.weather-snow,.weather-cloudAndSun,.weather-rain{
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
     display: inline-block;
     position: relative;
-}
-
-.weather-cloudAndSun,.weather-rain{
-    margin-left: 60px;
+    top: -85px;
+    left: -58px;
 }
 
 .sun{
@@ -131,7 +129,6 @@
     border-radius: 5px;
     background: #CDEDF8;
     transform: rotate(0deg);
-    position: absolute;
     top: 70%;
     left: 60%;
     animation: Rotate 12s infinite linear;

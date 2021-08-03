@@ -8,3 +8,10 @@
 .date{
     font-size: 17px;
 }
+
+@media (max-width: 1000px){
+    .city__and__date{
+       text-align: center;
+        margin: 40px 0;
+    }
+}

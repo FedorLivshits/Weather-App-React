@@ -1,11 +1,12 @@
-.weather__day{
+.weather__day {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     height: 200px;
 }
-.day-temp{
+
+.day-temp {
     font-size: 20px;
 }
 
@@ -20,6 +21,7 @@
     position: relative;
     width: 100px;
 }
+
 .weatherIcon:before, .weatherIcon:after {
     content: "";
     height: inherit;
@@ -27,12 +29,14 @@
     top: 0;
     width: inherit;
 }
+
 .weatherIcon > div:before, .weatherIcon > div:after,
 .weatherIcon .inner:before, .weatherIcon .inner:after {
     content: "";
     letter-spacing: 0;
     position: absolute;
 }
+
 .clear, .sunny, .mostlysunny, .partlycloudy, .mostlycloudy, .partlysunny, .cloudy, .fog, .hazy, .chancerain, .rain, .chancetstorms, .tstorms, .chancesleet, .sleet, .chanceflurries, .flurries, .chancesnow, .snow, .inner {
     height: inherit;
     width: inherit;
@@ -42,6 +46,7 @@
 .clear, .sunny {
     margin-top: 48.5%;
 }
+
 .clear, .clear:before, .clear > .inner:before, .clear > .inner:after, .sunny, .sunny:before, .sunny > .inner:before, .sunny > .inner:after {
     background: #FFD632;
     left: 0;
@@ -49,15 +54,19 @@
     width: 100%;
     height: 0.2em;
 }
+
 .clear:before, .sunny:before {
     transform: rotate(45deg);
 }
+
 .clear > .inner:before, .sunny > .inner:before {
     transform: rotate(90deg);
 }
+
 .clear > .inner:after, .sunny > .inner:after {
     transform: rotate(135deg);
 }
+
 .clear:after, .sunny:after {
     background: #FFD632;
     border-radius: 50%;
@@ -72,30 +81,35 @@
     background: #fff;
     border-radius: 50%;
 }
+
 .cloudy:before {
     height: 35%;
     right: 0;
     top: 0;
     width: 38%;
 }
+
 .cloudy > .inner:before {
     height: 27%;
     left: 45%;
     top: 8%;
     width: 30%;
 }
+
 .cloudy > .inner:after {
     bottom: 0;
     height: 50%;
     right: 0;
     width: 55%;
 }
+
 .cloudy:after {
     bottom: 0;
     height: 63%;
     left: 0;
     width: 70%;
 }
+
 /*** Chance Rain / Rain ***/
 .chancerain:before, .chancerain > .inner:before, .rain:before, .rain > .inner:before {
     border-left: 0.2em dashed #fff;
@@ -105,22 +119,27 @@
     transform: skew(-20deg);
     width: 13%;
 }
+
 .chancerain:before, .rain:before {
     left: 25%;
 }
+
 .chancerain > .inner:before, .rain > .inner:before {
     left: 57%;
 }
+
 .chancerain > .inner:after, .chancerain:after, .rain > .inner:after, .rain:after {
     background: #7799AF;
     border-radius: 50%;
 }
+
 .chancerain > .inner:after, .rain > .inner:after {
     height: 63%;
     left: 0;
     top: 0;
     width: 70%;
 }
+
 .chancerain:after, .rain:after {
     height: 50%;
     right: 0;
@@ -135,25 +154,30 @@
     content: "\2733\ \2733\ \2733";
     font-size: 1em;
 }
+
 .chancesnow > .inner:before, .snow > .inner:before {
     bottom: 17%;
     right: 21%;
 }
+
 .chancesnow > .inner:after, .snow > .inner:after {
     bottom: 0;
     left: 21%;
 }
+
 .chancesnow:before, .chancesnow:after,
 .snow:before, .snow:after {
     background: #BACEDD;
     border-radius: 50%;
 }
+
 .chancesnow:before, .snow:before {
     height: 63%;
     left: 0;
     top: 0;
     width: 70%;
 }
+
 .chancesnow:after, .snow:after {
     height: 50%;
     right: 0;
