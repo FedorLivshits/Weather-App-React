@@ -1,8 +1,8 @@
-import {getFiveDaysWeather, getWeather} from "../../api/api";
-import {setFiveDaysWeather} from "./fiveDaysWeather-reducer"
+import {getFiveDaysWeather, getWeather} from '../../api/api'
+import {setFiveDaysWeather} from './fiveDaysWeather-reducer'
 
-const SET_WEATHER = 'SET_WEATHER';
-const UPDATE_INPUT_TEXT = 'UPDATE_INPUT_TEXT';
+const SET_WEATHER = 'SET_WEATHER'
+const UPDATE_INPUT_TEXT = 'UPDATE_INPUT_TEXT'
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 
 
@@ -23,9 +23,9 @@ let initialState = {
             speed: null,
             gust: null
         },
-        weather: [{description: "", main: ""}]
+        weather: [{description: '', main: ''}]
     },
-    updateTextInput: "",
+    updateTextInput: '',
     isFetching: false
 }
 
@@ -41,13 +41,13 @@ const weatherReducer = (state = initialState, action) => {
             return {...state, isFetching: action.isFetching}
         }
         default:
-            return state;
+            return state
     }
 }
 
-export const setWeather = (weather) => ({type: SET_WEATHER, weather});
-export const updateInputText = (text) => ({type: UPDATE_INPUT_TEXT, text});
-export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching});
+export const setWeather = (weather) => ({type: SET_WEATHER, weather})
+export const updateInputText = (text) => ({type: UPDATE_INPUT_TEXT, text})
+export const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
 
 
 export const getAllWeatherTC = (city) => {
@@ -64,7 +64,7 @@ export const getAllWeatherTC = (city) => {
         getFiveDaysWeather(city)
             .then(data => {
                 dispatch(toggleIsFetching(false))
-                let result = data.list.filter(w => w['dt_txt'].includes("12:00:00"))
+                let result = data.list.filter(w => w['dt_txt'].includes('12:00:00'))
                 let fiveDaysWeather = result.map(d => {
                     return {
                         date: d['dt_txt'],
@@ -83,5 +83,5 @@ export const getAllWeatherTC = (city) => {
 }
 
 
-export default weatherReducer;
+export default weatherReducer
 

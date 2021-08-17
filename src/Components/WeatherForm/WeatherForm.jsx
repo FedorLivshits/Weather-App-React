@@ -1,14 +1,20 @@
-import React from "react";
-import icon from "../../assets/images/search-icon.svg"
-import preloader from "../../assets/images/preloader.svg"
-import classes from "./WeatherForm.module.css"
+import React from 'react'
+import icon from '../../assets/images/search-icon.svg'
+import preloader from '../../assets/images/preloader.svg'
+import classes from './WeatherForm.module.css'
+import {useDispatch, useSelector} from 'react-redux'
+import {getIsFetching} from '../../redux/selectors/selectors'
+import {updateInputText} from '../../redux/reducers/weather-reducer'
 
 
-function WeatherForm({updateInputText, getAllWeather, isFetching}) {
+const WeatherForm = ({getAllWeather}) => {
+    const isFetching = useSelector(getIsFetching)
+
+    const dispatch = useDispatch()
 
     const inputCity = (event) => {
         let city = event.target.value
-        updateInputText(city)
+        dispatch(updateInputText(city))
     }
     const searchCity = () => {
         getAllWeather()
@@ -26,12 +32,12 @@ function WeatherForm({updateInputText, getAllWeather, isFetching}) {
             {
                 isFetching
                     ?
-                <img className={classes.preloader} src={preloader} alt=""/>
+                    <img className={classes.preloader} src={preloader} alt=""/>
                     :
-                <img src={icon} alt="" onClick={searchCity}/>
+                    <img src={icon} alt="" onClick={searchCity}/>
             }
         </form>
     )
 }
 
-export default WeatherForm;
+export default WeatherForm

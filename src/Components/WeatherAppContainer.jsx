@@ -1,71 +1,49 @@
 import React, {useEffect} from 'react'
-import {connect} from "react-redux";
-import {
-    getAllWeatherTC,
-    setWeather,
-    toggleIsFetching,
-    updateInputText
-} from "../redux/reducers/weather-reducer";
-import {setFiveDaysWeather} from "../redux/reducers/fiveDaysWeather-reducer";
-import WeatherApp from "./WeatherApp";
-import {getCityName, getFiveDaysWeather, getIsFetching, getWeather} from "../redux/selectors/selectors";
+import {useDispatch, useSelector} from 'react-redux'
+import WeatherApp from './WeatherApp'
+import {getCityName, getFiveDaysWeather, getIsFetching, getWeather} from '../redux/selectors/selectors'
 import {usePosition} from './Hook/usePosition'
 import {getWeatherByCoordinates} from '../api/api'
+import {getAllWeatherTC} from '../redux/reducers/weather-reducer'
 
 
-function WeatherAppContainer({weather, fiveDaysWeather, updateInputText, isFetching, getAllWeatherTC, cityName, watch, settings}) {
-    const {
-        latitude,
-        longitude,
-        timestamp,
-        accuracy,
-        speed,
-        error,
-    } = usePosition(watch, settings)
+const WeatherAppContainer = ({watch, settings}) => {
+    const weather = useSelector(getWeather)
+    const cityName = useSelector(getCityName)
+    const fiveDaysWeather = useSelector(getFiveDaysWeather)
+    const isFetching = useSelector(getIsFetching)
 
+    const dispatch = useDispatch()
+
+    const {latitude, longitude} = usePosition(watch, settings)
 
     useEffect(() => {
         if (latitude !== undefined && longitude !== undefined) {
             getWeatherByCoordinates(latitude, longitude)
                 .then(data => {
                     let city = data.name
-                    getAllWeatherTC(city)
+                    dispatch(getAllWeatherTC(city))
                 })
         }
     }, [latitude, longitude])
 
     const getAllWeather = () => {
-        getAllWeatherTC(cityName)
+        dispatch(getAllWeatherTC(cityName))
     }
 
     const isNotEmptyObj = (obj) => {
         for (let key in obj) {
-            return true;
+            return true
         }
-        return false;
+        return false
     }
 
     return (
         <WeatherApp getAllWeather={getAllWeather} isNotEmptyObj={isNotEmptyObj} weather={weather}
-                    fiveDaysWeather={fiveDaysWeather} updateInputText={updateInputText} isFetching={isFetching}/>
-    );
+                    fiveDaysWeather={fiveDaysWeather} isFetching={isFetching}/>
+    )
 
 }
 
-let mapStateToProps = (state) => {
-    return {
-        weather: getWeather(state),
-        cityName: getCityName(state),
-        fiveDaysWeather: getFiveDaysWeather(state),
-        isFetching: getIsFetching(state)
-    }
-}
 
-
-export default connect(mapStateToProps, {
-    setWeather,
-    setFiveDaysWeather,
-    updateInputText,
-    toggleIsFetching,
-    getAllWeatherTC
-})(WeatherAppContainer)
+export default WeatherAppContainer

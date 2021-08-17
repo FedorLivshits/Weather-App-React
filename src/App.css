@@ -12,9 +12,8 @@
     background: rgb(142, 73, 232);
 }
 
-
 .app {
-    height: 100vh;
+    min-height: 100vh;
     overflow-x: hidden;
     background: linear-gradient(to bottom, #21a1ba 0%, #4d2cc4 100%);
 }

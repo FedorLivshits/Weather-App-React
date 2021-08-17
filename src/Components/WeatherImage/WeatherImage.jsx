@@ -3,7 +3,6 @@ import  classes from "./WeatherImage.module.css"
 
 
 export const WeatherImage = ({weatherDescription}) => {
-
         switch (weatherDescription) {
             case "Clear":
                 return <div className={classes["weather-sun"]}>
@@ -38,12 +37,10 @@ export const WeatherImage = ({weatherDescription}) => {
         }
 }
 
-export function WeatherImageInfo({temp, description}) {
-    return (
-        <div className="weather__image-info">
-            <div className="weather__temp">{Math.round(temp)}°</div>
-            <div className="weather__description">{description}</div>
-        </div>
-    )
-}
+export const WeatherImageInfo = ({temp, description}) => (
+    <div className="weather__image-info">
+        <div className="weather__temp">{Math.round(temp)}°</div>
+        <div className="weather__description">{description}</div>
+    </div>
+)
 

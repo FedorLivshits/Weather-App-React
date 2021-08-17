@@ -1,4 +1,4 @@
-const SET_FIVE_DAYS_WEATHER = 'SET_FIVE_DAYS_WEATHER';
+const SET_FIVE_DAYS_WEATHER = 'SET_FIVE_DAYS_WEATHER'
 
 let initialState = {
     fiveDaysWeather: []
@@ -10,11 +10,11 @@ const fiveDaysWeatherReducer = (state = initialState, action) => {
             return {...state, fiveDaysWeather: action.fiveDaysWeather}
         }
         default:
-            return state;
+            return state
     }
 }
 
-export const setFiveDaysWeather = (fiveDaysWeather) => ({type: SET_FIVE_DAYS_WEATHER, fiveDaysWeather});
+export const setFiveDaysWeather = (fiveDaysWeather) => ({type: SET_FIVE_DAYS_WEATHER, fiveDaysWeather})
 
-export default fiveDaysWeatherReducer;
+export default fiveDaysWeatherReducer
 

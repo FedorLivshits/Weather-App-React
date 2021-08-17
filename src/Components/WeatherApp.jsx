@@ -2,11 +2,11 @@ import React from 'react'
 import DayWeatherCard from './DayWeatherCard/DayWeatherCard'
 import WeatherCityAndDate from './WeatherCityAndDate/WeatherCityAndDate'
 import WeatherForm from './WeatherForm/WeatherForm'
-import { WeatherImage, WeatherImageInfo } from './WeatherImage/WeatherImage'
+import {WeatherImage, WeatherImageInfo} from './WeatherImage/WeatherImage'
 import WeatherInfo from './WeatherInfo/WeatherInfo'
 
 
-function WeatherApp({weather, fiveDaysWeather, updateInputText, getAllWeather, isNotEmptyObj, isFetching}) {
+function WeatherApp({weather, fiveDaysWeather, getAllWeather, isNotEmptyObj}) {
     return (
         <>
             <header>
@@ -15,9 +15,7 @@ function WeatherApp({weather, fiveDaysWeather, updateInputText, getAllWeather, i
                 </h1>
             </header>
             <div className="container">
-                <WeatherForm updateInputText={updateInputText} getAllWeather={getAllWeather}
-                             fiveDaysWeather={fiveDaysWeather} isFetching={isFetching}/>
-
+                <WeatherForm getAllWeather={getAllWeather}/>
                 {
                     (fiveDaysWeather.length && isNotEmptyObj(weather))
                         ?
@@ -34,13 +32,13 @@ function WeatherApp({weather, fiveDaysWeather, updateInputText, getAllWeather, i
                                 </div>
                                 <WeatherInfo temp_max={weather.main.temp_max} temp_min={weather.main.temp_min}
                                              feels_like={weather.main.feels_like} wind={weather.wind.speed}
-                                            gust={weather.wind.gust} humidity={weather.main.humidity}/>
+                                             gust={weather.wind.gust} humidity={weather.main.humidity}/>
                             </div>
                             <div className='weather___for-five-days-wrapper'>
-                            <div className="weather___for-five-days">
-                                {fiveDaysWeather.map(day => <DayWeatherCard key={day.date} day={day}
-                                                                            fiveDaysWeather={fiveDaysWeather}/>)}
-                            </div>
+                                <div className="weather___for-five-days">
+                                    {fiveDaysWeather.map(day => <DayWeatherCard key={day.date} day={day}
+                                                                                fiveDaysWeather={fiveDaysWeather}/>)}
+                                </div>
                             </div>
                         </>
                         :
